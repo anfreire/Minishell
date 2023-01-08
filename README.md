@@ -8,6 +8,7 @@
 - (echo -n teste -> exit)
 - (echo teste >> 1.txt -> exit
 - (^C ->  ^C   ->   exit)
+# LEAKS RESOLVIDAS 
 
 Observação:
 
@@ -15,4 +16,6 @@ Visto o comportamento da execução do comando em cima consegui concluir que nã
 Com isto conclui-se que tinha alguma relação. Mas qual era o comportamento dos sinais?
 Uma linha vazia....
 Portanto a razão dos problema, neste caso foi a razão da linha vazia, que não necessitava de nenhum tipod e processamneto nem de alocação.
-- [ ] CD :  SEGV não se deve ao / no final da string. já foi removido e continua a dar....                        
+# RESOLVIDO (FUNC -> NULL_THEM_VAR)
+- [ ] CD :  SEGV não se deve ao / no final da string. já foi removido e continua a dar....     
+- [ ] Exit status....                   
