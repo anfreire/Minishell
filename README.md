@@ -7,4 +7,3 @@
 - [ ]  Leaks no exit
 - [ ]  Leaks asseguir de ($ ▶ cd ..     →     $ ▶ pwd)
 - [ ]  Leaks asseguir de ($ ▶ echo -n teste     →     $ ▶ echo $?)
-- [ ]  ver se o pwd retorna 1 g_exit
