@@ -37,7 +37,7 @@ int	find_i_for_infile(t_data *data, int index)
 	while (++ind_c <= index)
 	{
 		save = 0;
-		while (data->par_line[++i] && redir_detector(data,
+		while (data->par_line[++i] && redir_detector(data, \
 				data->par_line[i]) != 1)
 		{
 			if (redir_detector(data, data->par_line[i]) > 1)

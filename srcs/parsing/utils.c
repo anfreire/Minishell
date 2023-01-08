@@ -86,3 +86,15 @@ void	get_str(t_data *data, char *str, int index)
 	while (str[++i] != 0)
 		data->built.builtins[index][i] = str[i];
 }
+
+void	null_them_var(t_data *data)
+{
+	data->ids.id = NULL;
+	data->ids.pfd = NULL;
+	data->redir.input = NULL;
+	data->redir.output = NULL;
+	data->ids.outp_list = NULL;
+	data->redir.input = NULL;
+	data->redir.output = NULL;
+	data->ids.indicador = NULL;
+}

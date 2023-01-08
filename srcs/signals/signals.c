@@ -24,3 +24,21 @@ void	sig_handler(int signum)
 		g_exit = 130;
 	}
 }
+
+void	sig_handler_no_extra_nl(int signum)
+{
+	static int	i = 0;
+
+	if (signum == SIGINT && i == 0)
+	{
+		rl_replace_line("", 0);
+		rl_on_new_line();
+		g_exit = 130;
+		i = 1;
+	}
+	else
+	{
+		sig_handler(signum);
+		i = 0;
+	}
+}

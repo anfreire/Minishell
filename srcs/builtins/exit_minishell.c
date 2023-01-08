@@ -39,14 +39,15 @@ static int	is_string_digit(char *str)
 	return (1);
 }
 
-static int	return_exit(char *str)
+void	free_exit(t_data *data)
 {
-	int	digit;
+	int	size;
 
-	digit = (char)ft_atoi(str);
-	if (digit)
-		return (digit);
-	return (0);
+	size = data->cmd.cmd_nbr + data->built.builtin_n;
+	if (size == 0)
+		free(data->ids.inp_list);
+	free(data->ids.id);
+	free(data->ids.indicador);
 }
 
 void	exit_minishell(t_data *data, int index)
@@ -60,7 +61,7 @@ void	exit_minishell(t_data *data, int index)
 		if (!is_string_digit(data->par_line[index + 1]))
 		{
 			printf("minishell: exit: %s: numeric argument required\n", \
-				data->par_line[1]);
+				data->par_line[index + 1]);
 			g_exit = 2;
 		}
 		else if (args > 2)
@@ -69,8 +70,9 @@ void	exit_minishell(t_data *data, int index)
 			g_exit = 1;
 		}
 		else
-			g_exit = return_exit(data->par_line[index + 1]);
+			g_exit = ft_atoi(data->par_line[index + 1]);
 	}
 	free_line_info(data);
+	free_exit(data);
 	exit(g_exit);
 }

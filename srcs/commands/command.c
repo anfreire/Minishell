@@ -33,6 +33,7 @@ void	run_command(t_data *data, int index, int cmd_i, int i)
 		return ;
 	}
 	signal(SIGQUIT, SIG_DFL);
+	signal(SIGINT, sig_handler_no_extra_nl);
 	data->ids.id[index] = fork();
 	if (data->ids.id[index] == 0)
 	{

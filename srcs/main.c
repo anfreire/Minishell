@@ -16,6 +16,11 @@ int	g_exit;
 
 int	run_line(t_data *data, int i, int *flag)
 {
+	int	size;
+
+	size = data->cmd.cmd_nbr + data->built.builtin_n;
+	if (size == 0)
+		no_command_not_found(data);
 	while (data->par_line[++i])
 	{
 		if (builtin_detector(data, data->par_line[i]) >= 0)
@@ -36,17 +41,12 @@ int	walk_till_executable(t_data *data, int i)
 {
 	int	len;
 	int	flag;
-	int	*ptr;
 
 	len = 0;
 	flag = 0;
-	ptr = &flag;
 	while (data->par_line[len])
 		len++;
-	if (len <= i + 1)
-		return (-1);
-	else
-		i = run_line(data, i, ptr);
+	i = run_line(data, i, &flag);
 	if (flag > 1)
 		command_not_found(data);
 	if (i == len)
@@ -100,6 +100,7 @@ void	close_files(t_data *data)
 	i = -1;
 	while (++i < size)
 		waitpid(data->ids.id[i], &g_exit, 0);
+	signal(SIGINT, sig_handler);
 	WEXITSTATUS(g_exit);
 	if (g_exit == 2)
 		g_exit = 130;
@@ -116,6 +117,7 @@ int	main(int argc, char *argv[], char *envp[])
 	if (argc < 1 || *argv == NULL)
 		return (0);
 	starting(&data, envp);
+	null_them_var(&data);
 	while (1)
 	{
 		get_line(&data);

@@ -32,6 +32,8 @@ typedef struct s_built
 
 typedef struct s_redir
 {
+	int		flag_i;
+	int		flag_o;
 	int		hdoc_id;
 	int		last;
 	int		r_counter;
@@ -72,6 +74,7 @@ typedef struct s_ids
 	int		in_fd;
 	int		out_fd;
 	int		**pfd;
+	int		*indicador;
 	pid_t	*id;
 }				t_ids;
 
@@ -117,19 +120,21 @@ typedef struct s_get_line
 
 typedef struct s_data
 {
-	char		**par_line;
-	char		*line;
-	char		**envp;
-	t_ids		ids;
-	t_cmd		cmd;
-	t_paths		paths;
-	t_redir		redir;
-	t_built		built;
-	t_andre		andre;
+	int		size;
+	char	**par_line;
+	char	*line;
+	char	**envp;
+	t_ids	ids;
+	t_cmd	cmd;
+	t_paths	paths;
+	t_redir	redir;
+	t_built	built;
+	t_andre	andre;
 }				t_data;
 
 void	starting_vars(t_data *data);
 void	starting(t_data *data, char *envp[]);
+void	start_flags_redir(t_data *data, int *index, int *i);
 
 //UTILS
 // utils
@@ -149,6 +154,7 @@ void	set_counters(t_data *data);
 void	alloc_cmds(t_data *data);
 void	allocat_lists(t_data *data, int size);
 void	parse_alloc(t_data *data);
+void	null_them_var(t_data *data);
 
 //line handling and utils
 void	get_line(t_data *data);
@@ -196,6 +202,8 @@ int		true_path_join(t_data *data, int index, int i);
 void	command_not_found(t_data *data);
 void	parse_cmds(t_data *data);
 void	parse_cmd(t_data *data, int index);
+void	command_not_found(t_data *data);
+void	no_command_not_found(t_data *data);
 void	true_path(t_data *data, int index, int i, int count);
 void	parse_real_cmd(t_data *data, int index, int i, int count);
 int		acessing_cmd(t_data *data, int index, int i);
@@ -286,6 +294,7 @@ int		exec_out_redirect(t_data *data, int index, int save);
 void	sig_handler(int signum);
 void	exit_shell_sig(int sig);
 void	exit_shell(t_data *data);
+void	sig_handler_no_extra_nl(int signum);
 
 //MAIN
 void	brain(t_data *data);

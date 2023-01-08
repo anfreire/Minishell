@@ -35,17 +35,25 @@ void	exec_builtin(t_data *data, int index, int i)
 	int	jndex;
 
 	jndex = builtin_detector(data, data->par_line[i]);
-	if (jndex < 6 && jndex >= 0)
+	if (jndex < 2 && jndex >= 0)
 	{
 		data->ids.id[index] = fork();
 		if (data->ids.id[index] == 0)
 			run_child_bultin(data, index, jndex, i);
 		data->redir.r_counter++;
 	}
+	else if (jndex == 2)
+		env(data, index);
+	else if (jndex == 3)
+		export(data, index);
+	else if (jndex == 4)
+		unset(data, index);
+	else if (jndex == 5)
+		b_cd(data, index);
 	else if (jndex == 6)
 		run_minishell(data, index);
 	else if (jndex == 7)
-		exit_minishell(data, i);
+		exit_minishell(data, index);
 }
 
 void	execve_builtin(t_data *data, int jndex, int i)
@@ -54,14 +62,6 @@ void	execve_builtin(t_data *data, int jndex, int i)
 		b_echo(data, i);
 	else if (jndex == 1)
 		b_pwd();
-	if (jndex == 2)
-		env(data, i);
-	else if (jndex == 3)
-		export(data, i);
-	else if (jndex == 4)
-		unset(data, i);
-	else if (jndex == 5)
-		b_cd(data, i);
 }
 
 int	find_in_list(int *smal, int i)

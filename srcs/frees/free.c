@@ -27,22 +27,22 @@ void	free_line_info(t_data *data)
 	i = -1;
 	if (data->cmd.cmd_nbr > 0)
 		free_cmds(data);
-	while (data->par_line[++i])
+	while (data->par_line && data->par_line[++i])
 		free(data->par_line[i]);
 	free(data->par_line);
 	free_builtins(data);
 	free(data->redir.redir_lib);
 	i = -1;
-	while (data->paths.paths[++i])
+	while (data->paths.paths && data->paths.paths[++i])
 		free(data->paths.paths[i]);
 	free(data->paths.paths);
 	free(data->paths.p_str);
 	i = -1;
-	while (data->redir.input[++i])
+	while (data->redir.input && data->redir.input[++i])
 		free(data->redir.input[i]);
 	free(data->redir.input);
 	i = -1;
-	while (data->redir.output[++i])
+	while (data->redir.output && data->redir.output[++i])
 		free(data->redir.output[i]);
 	free(data->redir.output);
 	free(data->ids.inp_list);
@@ -120,4 +120,5 @@ void	free_for_builtins(t_data *data)
 		free(data->ids.inp_list);
 	if (data->ids.outp_list)
 		free(data->ids.outp_list);
+	free(data->ids.indicador);
 }

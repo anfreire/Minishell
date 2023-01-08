@@ -61,9 +61,9 @@ void	alloc_cmds(t_data *data)
 {
 	if (data->cmd.cmd_nbr > 0)
 	{
-		data->cmd.cmdx = (char ***)malloc((data->cmd.cmd_nbr + 1)
+		data->cmd.cmdx = (char ***)malloc((data->cmd.cmd_nbr + 1) \
 				* sizeof(char **));
-		data->paths.path_cmd = (char **)malloc((data->cmd.cmd_nbr + 1)
+		data->paths.path_cmd = (char **)malloc((data->cmd.cmd_nbr + 1) \
 				* sizeof(char *));
 		data->cmd.cmdx[data->cmd.cmd_nbr] = NULL;
 		data->paths.path_cmd[data->cmd.cmd_nbr] = NULL;
@@ -89,26 +89,22 @@ void	alloc_redirections(t_data *data)
 	allocat_lists(data, size);
 }
 
-void	allocat_lists(t_data *data, int size)
+void	extra_protection_free(t_data *data)
 {
-	int	i;
+	int	valor;
 
-	data->ids.id = (int *)malloc(size * sizeof(int));
-	data->ids.pfd = (int **)malloc(size * sizeof(int *));
-	data->redir.input = (char **)malloc((size + 1) * sizeof(char *));
-	data->redir.output = (char **)malloc((size + 1) * sizeof(char *));
-	data->ids.outp_list = (int *)malloc(size * sizeof(int));
-	data->redir.input[size] = NULL;
-	data->redir.output[size] = NULL;
-	i = -1;
-	while (++i < size)
+	if (data->ids.indicador)
 	{
-		data->ids.pfd[i] = (int *)malloc(2 * sizeof(int));
-		if (pipe(data->ids.pfd[i]) != 0)
-			return ;
-		data->redir.input[i] = (char *)malloc(sizeof(char));
-		data->redir.output[i] = (char *)malloc(sizeof(char));
-		data->ids.inp_list[i] = STDIN_FILENO;
-		data->ids.outp_list[i] = STDOUT_FILENO;
+		valor = data->ids.indicador[0];
+		free(data->ids.indicador);
 	}
+	if (data->ids.pfd)
+	{
+		while (--valor >= 0)
+			free(data->ids.pfd[valor]);
+		free(data->ids.pfd);
+	}
+	if (data->ids.id)
+		free(data->ids.id);
+	null_them_var(data);
 }
