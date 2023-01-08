@@ -21,7 +21,7 @@ static void	change_shlvl(t_data *data)
 	char	*value_in_str;
 
 	i = env_var_detector(data, "SHLVL");
-	value_in_str = ft_strchr(data->envp[i], '=') + 1; //!
+	value_in_str = ft_strchr(data->envp[i], '=') + 1;
 	value = ft_atoi(value_in_str);
 	value++;
 	free(data->envp[i]);
@@ -32,20 +32,13 @@ static void	change_shlvl(t_data *data)
 
 // https://www.geeksforgeeks.org/exit-status-child-process-linux/
 
-void	run_minishell(t_data *data, int index)
+static void	run_minishell_aux(t_data *data, int index, char **av)
 {
 	int		in_fd;
 	int		out_fd;
-	char	*av[3];
 
 	in_fd = 0;
 	out_fd = 1;
-	av[0] = "/bin/bash";
-	av[1] = "./minishell";
-	av[2] = NULL;
-	signal(SIGINT, SIG_IGN);
-	signal(SIGQUIT, SIG_IGN);
-	data->ids.id[index] = fork();
 	if (data->ids.id[index] == 0)
 	{
 		if (in_fd > 0)
@@ -62,4 +55,17 @@ void	run_minishell(t_data *data, int index)
 		g_exit /= 256;
 		return ;
 	}
+}
+
+void	run_minishell(t_data *data, int index)
+{
+	char	*av[3];
+
+	av[0] = "/bin/bash";
+	av[1] = "./minishell";
+	av[2] = NULL;
+	signal(SIGINT, SIG_IGN);
+	signal(SIGQUIT, SIG_IGN);
+	data->ids.id[index] = fork();
+	run_minishell_aux(data, index, av);
 }

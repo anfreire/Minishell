@@ -12,7 +12,7 @@
 
 #include "../header.h"
 
-int		g_exit;
+int	g_exit;
 
 int	run_line(t_data *data, int i, int *flag)
 {
@@ -20,11 +20,11 @@ int	run_line(t_data *data, int i, int *flag)
 	{
 		if (builtin_detector(data, data->par_line[i]) >= 0)
 			break ;
-		else if (cmd_detector(data, data->par_line[i]) == 1 &&
-					data->paths.p_str != NULL)
+		else if (cmd_detector(data, data->par_line[i]) == 1 \
+			&& data->paths.p_str != NULL)
 			break ;
-		else if (cmd_detector(data, data->par_line[i]) == 2 &&
-					data->paths.p_str != NULL)
+		else if (cmd_detector(data, data->par_line[i]) == 2 \
+			&& data->paths.p_str != NULL)
 			break ;
 		else if (redir_detector(data, data->par_line[i]) == 1)
 			flag++;
@@ -69,8 +69,8 @@ void	brain(t_data *data)
 			exec_builtin(data, data->redir.r_counter, i);
 			data->built.b_counter++;
 		}
-		else if (cmd_detector(data, data->par_line[i]) > 0 &&
-					data->paths.p_str != NULL)
+		else if (cmd_detector(data, data->par_line[i]) > 0 && \
+			data->paths.p_str != NULL)
 		{
 			run_command(data, data->redir.r_counter, data->cmd.c_counter, i);
 			data->cmd.c_counter++;
@@ -121,12 +121,6 @@ int	main(int argc, char *argv[], char *envp[])
 		get_line(&data);
 		starting_vars(&data);
 		parse_line(&data);
-		// int len = -1;
-		// ↓↓↓↓ Pare remover depois - DEBUGGING ↓↓↓↓
-		// while (data.par_line[++len])
-		// 	printf("\nArg[%d] - > |%s|", len + 1, data.par_line[len]);
-		// printf("\n");
-		// ↑↑↑↑ Para remover depois - DEBUGGING ↑↑↑↑
 		get_paths(&data);
 		if (data.paths.p_str != NULL)
 		{

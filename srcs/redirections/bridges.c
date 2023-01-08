@@ -49,7 +49,7 @@ int	bridging_infiles(t_data *data, int index, int count, int i)
 			if (open(data->par_line[i + 1], O_RDONLY) < 0)
 			{
 				printf("Error: the file %s does not exist.", data->par_line[i
-						+ 1]);
+					+ 1]);
 				return (-1);
 			}
 		}

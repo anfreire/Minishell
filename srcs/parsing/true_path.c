@@ -87,8 +87,8 @@ int	true_path_join(t_data *data, int index, int i)
 	j = -1;
 	while (data->par_line[i][++j])
 		data->paths.path_cmd[index][j] = data->par_line[i][j];
-	if (access(data->paths.path_cmd[index], X_OK) == 0 &&
-		!is_dot_cmd(data->paths.path_cmd[index]))
+	if (access(data->paths.path_cmd[index], X_OK) == 0 \
+		&& !is_dot_cmd(data->paths.path_cmd[index]))
 		return (1);
 	return (0);
 }

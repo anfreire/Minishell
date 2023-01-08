@@ -63,3 +63,16 @@ void	execve_builtin(t_data *data, int jndex, int i)
 	else if (jndex == 5)
 		b_cd(data, i);
 }
+
+int	find_in_list(int *smal, int i)
+{
+	int	index;
+
+	index = -1;
+	while (smal[++index] >= 0)
+	{
+		if (smal[index] == i)
+			return (-1);
+	}
+	return (index);
+}

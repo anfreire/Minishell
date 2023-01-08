@@ -71,3 +71,13 @@ char	**build_list(int len, char **ptr, char *str, t_data *data)
 		ptr[len - 1] = realloc_string(ptr[len - 1], str, 1);
 	return (ptr);
 }
+
+int	parse_pipe(char ***dbl_ptr, char *line, int args, t_data *data)
+{
+	char	*str;
+
+	str = ft_substr(line, 0, 1);
+	*dbl_ptr = build_list(args, *dbl_ptr, str, data);
+	free(str);
+	return (1);
+}

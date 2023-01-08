@@ -21,11 +21,11 @@ void	popullate_echo(t_data *data, int index)
 	i = index + 2;
 	while (data->par_line[i])
 	{
-		if (ft_strncmp(data->par_line[i], "|", 2) == 0 ||
-			ft_strncmp(data->par_line[i], "<", 2) == 0 ||
-			ft_strncmp(data->par_line[i], ">", 2) == 0 ||
-			ft_strncmp(data->par_line[i], "<<", 3) == 0 ||
-			ft_strncmp(data->par_line[i], ">>", 3) == 0)
+		if (ft_strncmp(data->par_line[i], "|", 2) == 0 \
+			|| ft_strncmp(data->par_line[i], "<", 2) == 0 \
+			|| ft_strncmp(data->par_line[i], ">", 2) == 0 \
+			|| ft_strncmp(data->par_line[i], "<<", 3) == 0 \
+			|| ft_strncmp(data->par_line[i], ">>", 3) == 0)
 			break ;
 		printf("%s", data->par_line[i]);
 		if (data->par_line[i + 1] != NULL)
@@ -34,12 +34,24 @@ void	popullate_echo(t_data *data, int index)
 	}
 }
 
+static void	b_echo_aux(t_data *data, int index, char *flag)
+{
+	if (ft_strncmp(data->par_line[index + 1], flag, 3) == 0)
+	{
+		popullate_echo(data, index);
+	}
+	else
+	{
+		popullate_echo(data, index - 1);
+		printf("\n");
+	}
+	g_exit = 0;
+}
+
 void	b_echo(t_data *data, int index)
 {
-	int		j;
 	char	flag[3];
 
-	j = index;
 	flag[0] = '-';
 	flag[1] = 'n';
 	flag[2] = '\0';
@@ -49,20 +61,5 @@ void	b_echo(t_data *data, int index)
 		return ;
 		g_exit = 0;
 	}
-	if (ft_strncmp(data->par_line[index + 1], flag, 3) == 0)
-	{
-		popullate_echo(data, index);
-	}
-	else
-	{
-		while (data->par_line[++j] &&
-				redir_detector(data, data->par_line[j]) != 1)
-		{
-			printf("%s", data->par_line[j]);
-			if (data->par_line[j + 1])
-				printf(" ");
-		}
-		printf("\n");
-	}
-	g_exit = 0;
+	b_echo_aux(data, index, flag);
 }

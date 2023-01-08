@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c       					                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/10 16:31:52 by anfreire          #+#    #+#             */
+/*   Updated: 2022/10/28 00:29:54 by anfreire         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../header.h"
 
 int	check_line_in_list(char *line, char **list)
@@ -27,11 +39,11 @@ void	parsing(char *line, char c)
 		else
 		{
 			printf("teste");
-			ft_memmove(&line[ptr1 - line], &line[ptr1 - line + 1],
-					ft_strlen(line) - (ptr1 - line));
+			ft_memmove(&line[ptr1 - line], &line[ptr1 - line + 1], \
+				ft_strlen(line) - (ptr1 - line));
 			ptr1 = ft_strchr(ptr1, c);
-			ft_memmove(&line[ptr1 - line], &line[ptr1 - line + 1],
-					ft_strlen(line) - (ptr1 - line));
+			ft_memmove(&line[ptr1 - line], &line[ptr1 - line + 1], \
+				ft_strlen(line) - (ptr1 - line));
 		}
 	}
 	return ;

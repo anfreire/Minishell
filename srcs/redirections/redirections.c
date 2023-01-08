@@ -50,53 +50,55 @@ int	redirect_output(t_data *data, int index)
 	return (i);
 }
 
+static int	redirect_aux(t_data *data, t_redir_tmp *var)
+{
+	if (var->ret > 1)
+	{
+		if (var->ret < 4 && var->flag_i == 0)
+		{
+			var->i = redirect_input(data, var->index);
+			if (var->i < 0)
+				return (-1);
+			else
+				var->flag_i = 1;
+		}
+		if (var->ret > 3 && var->flag_o == 0)
+		{
+			var->i = redirect_output(data, var->index);
+			if (var->i < 0)
+				return (-1);
+			else
+				var->flag_o = 1;
+		}
+	}
+	return (0);
+}
+
 int	redirect(t_data *data)
 {
-	int	i;
-	int	flag_i;
-	int	flag_o;
-	int	index;
-	int	size;
-	int	ret;
+	t_redir_tmp	var;
 
-	i = 0;
-	index = -1;
-	flag_i = 0;
-	flag_o = 0;
-	size = data->cmd.cmd_nbr + data->built.builtin_n;
-	while (++index <= size)
+	var.i = 0;
+	var.index = -1;
+	var.flag_i = 0;
+	var.flag_o = 0;
+	var.size = data->cmd.cmd_nbr + data->built.builtin_n;
+	while (++var.index <= var.size)
 	{
-		while (data->par_line[i])
+		while (data->par_line[var.i])
 		{
-			ret = redir_detector(data, data->par_line[i]);
-			if (ret == 1)
+			var.ret = redir_detector(data, data->par_line[var.i]);
+			if (var.ret == 1)
 			{
-				i++;
+				var.i++;
 				break ;
 			}
-			if (ret > 1)
-			{
-				if (ret < 4 && flag_i == 0)
-				{
-					i = redirect_input(data, index);
-					if (i < 0)
-						return (-1);
-					else
-						flag_i = 1;
-				}
-				if (ret > 3 && flag_o == 0)
-				{
-					i = redirect_output(data, index);
-					if (i < 0)
-						return (-1);
-					else
-						flag_o = 1;
-				}
-			}
-			i++;
+			if (redirect_aux(data, &var) == -1)
+				return (-1);
+			var.i++;
 		}
-		flag_i = 0;
-		flag_o = 0;
+		var.flag_i = 0;
+		var.flag_o = 0;
 	}
 	return (1);
 }

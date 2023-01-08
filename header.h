@@ -95,19 +95,37 @@ typedef struct s_andre
 	char	*c_ptr;
 }				t_andre;
 
+typedef struct s_redir_tmp
+{
+	int	i;
+	int	flag_i;
+	int	flag_o;
+	int	index;
+	int	size;
+	int	ret;
+}				t_redir_tmp;
+
+typedef struct s_get_line
+{
+	int		i;
+	int		args;
+	char	*line;
+	char	**dbl_ptr;
+}				t_get_line;
+
 // BIG MOMA
 
 typedef struct s_data
 {
-	char	**par_line;
-	char	*line;
-	char	**envp;
-	t_ids	ids;
-	t_cmd	cmd;
-	t_paths	paths;
-	t_redir	redir;
-	t_built	built;
-	t_andre	andre;
+	char		**par_line;
+	char		*line;
+	char		**envp;
+	t_ids		ids;
+	t_cmd		cmd;
+	t_paths		paths;
+	t_redir		redir;
+	t_built		built;
+	t_andre		andre;
 }				t_data;
 
 void	starting_vars(t_data *data);
@@ -152,6 +170,7 @@ char	*realloc_string(char *ptr, char *str, int flag);
 char	**realloc_list(char **ptr, int len);
 char	**build_list(int len, char **ptr, char *str, t_data *data);
 void	parse_line(t_data *data);
+int		parse_pipe(char ***dbl_ptr, char *line, int args, t_data *data);
 
 //ENVIRONMENT
 //parsing the env and extracting the paths

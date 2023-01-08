@@ -63,11 +63,6 @@ void	parse_cmds(t_data *data)
 
 	i = 0;
 	cmds = data->cmd.cmd_nbr + 1;
-	// if (cmds > 0)
-	// {
-	// 	signal(SIGINT, sig_handler);
-	// 	signal(SIGQUIT, SIG_IGN);//??
-	// }
 	while (--cmds > 0)
 	{
 		parse_cmd(data, i);
@@ -91,8 +86,8 @@ int	acessing_cmd(t_data *data, int index, int i)
 	while (++j < c)
 	{
 		path_join(data, index, j);
-		if (access(data->paths.path_cmd[index], X_OK) == 0 &&
-			!is_dot_cmd(data->paths.path_cmd[index]))
+		if (access(data->paths.path_cmd[index], X_OK) == 0 \
+			&& !is_dot_cmd(data->paths.path_cmd[index]))
 			return (1);
 		else
 			free(data->paths.path_cmd[index]);

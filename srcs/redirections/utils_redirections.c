@@ -72,8 +72,8 @@ int	find_i_for_outfile(t_data *data, int index)
 	save = 0;
 	while (++ind_c <= index)
 	{
-		while (data->par_line[++i] &&
-				redir_detector(data, data->par_line[i]) != 1)
+		while (data->par_line[++i] && \
+			redir_detector(data, data->par_line[i]) != 1)
 		{
 			if (redir_detector(data, data->par_line[i]) > 1)
 			{

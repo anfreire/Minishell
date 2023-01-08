@@ -16,7 +16,7 @@ extern int	g_exit;
 
 void	b_pwd(void)
 {
-	char buff[FILENAME_MAX];
+	char	buff[FILENAME_MAX];
 
 	getcwd(buff, FILENAME_MAX);
 	printf("%s\n", buff);

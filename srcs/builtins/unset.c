@@ -23,26 +23,12 @@ static int	starts_with_wrong_char(char c)
 		return (1);
 }
 
-void	unset(t_data *data, int index)
+static void	unset_aux(t_data *data, int i, int j)
 {
-	int		i;
-	int		j;
 	int		flag;
 	char	**new_envp;
 
-	j = 0;
 	flag = 0;
-	if (!data->par_line[index + 1])
-		return ;
-	i = env_var_detector(data, data->par_line[index + 1]);
-	if (starts_with_wrong_char(data->par_line[index + 1][0]))
-	{
-		printf("minishell: unset: \'%s\': not a valid identifier\n",
-				data->par_line[index + 1]);
-		g_exit = 1;
-		return ;
-	}
-	g_exit = 0;
 	if (i >= 0)
 	{
 		while (data->envp[j])
@@ -61,6 +47,26 @@ void	unset(t_data *data, int index)
 		free(data->envp);
 		data->envp = new_envp;
 	}
+}
+
+void	unset(t_data *data, int index)
+{
+	int		i;
+	int		j;
+
+	j = 0;
+	if (!data->par_line[index + 1])
+		return ;
+	i = env_var_detector(data, data->par_line[index + 1]);
+	if (starts_with_wrong_char(data->par_line[index + 1][0]))
+	{
+		printf("minishell: unset: \'%s\': not a valid identifier\n",
+			data->par_line[index + 1]);
+		g_exit = 1;
+		return ;
+	}
+	g_exit = 0;
+	unset_aux(data, i, j);
 }
 
 char	*selection(t_data *data, int j)

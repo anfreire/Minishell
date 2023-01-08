@@ -13,8 +13,6 @@
 #include "../../header.h"
 
 extern int	g_exit;
-// colects environment intrinsic to the computer and allocates
-// to our own environment.
 
 void	get_envp(t_data *data, char **envp)
 {
@@ -50,11 +48,11 @@ int	data_par_line_counter(t_data *data, int index)
 	i = 0;
 	while (data->par_line[index])
 	{
-		if (ft_strncmp(data->par_line[i], "|", 2) == 0 ||
-			ft_strncmp(data->par_line[i], "<", 2) == 0 ||
-			ft_strncmp(data->par_line[i], ">", 2) == 0 ||
-			ft_strncmp(data->par_line[i], "<<", 3) == 0 ||
-			ft_strncmp(data->par_line[i], ">>", 3) == 0)
+		if (ft_strncmp(data->par_line[i], "|", 2) == 0 \
+			|| ft_strncmp(data->par_line[i], "<", 2) == 0 \
+			|| ft_strncmp(data->par_line[i], ">", 2) == 0 \
+			|| ft_strncmp(data->par_line[i], "<<", 3) == 0 \
+			|| ft_strncmp(data->par_line[i], ">>", 3) == 0)
 			break ;
 		index++;
 		i++;
@@ -69,8 +67,8 @@ void	env(t_data *data, int index)
 	i = data_par_line_counter(data, index);
 	if (i > 1)
 	{
-		printf("env: \'%s\': No such file or directory\n", data->par_line[index
-				+ 1]);
+		printf("env: \'%s\': No such file or directory\n", \
+		data->par_line[index + 1]);
 		g_exit = 127;
 		return ;
 	}

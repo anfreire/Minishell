@@ -68,21 +68,10 @@ void	export_env(t_data *data)
 	free(smal);
 }
 
-int	get_next(t_data *data, int *smal)
+static void	get_next_aux(t_data *data, int *smal, int i, int s)
 {
-	int	i;
 	int	j;
-	int	s;
 
-	s = 0;
-	i = -1;
-	while (smal[++i] >= 0)
-	{
-		if (find_in_list(smal, i) < 0)
-			s++;
-		else
-			break ;
-	}
 	while (data->envp[++i] != NULL)
 	{
 		j = -1;
@@ -102,20 +91,24 @@ int	get_next(t_data *data, int *smal)
 				break ;
 		}
 	}
-	return (s);
 }
 
-int	find_in_list(int *smal, int i)
+int	get_next(t_data *data, int *smal)
 {
-	int	index;
+	int	i;
+	int	s;
 
-	index = -1;
-	while (smal[++index] >= 0)
+	s = 0;
+	i = -1;
+	while (smal[++i] >= 0)
 	{
-		if (smal[index] == i)
-			return (-1);
+		if (find_in_list(smal, i) < 0)
+			s++;
+		else
+			break ;
 	}
-	return (index);
+	get_next_aux(data, smal, i, s);
+	return (s);
 }
 
 // built-in that performs the function of unset in our own

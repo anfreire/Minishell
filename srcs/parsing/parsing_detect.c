@@ -49,8 +49,8 @@ int	cmd_detector(t_data *data, char *str)
 	while (data->paths.paths[++i_p])
 	{
 		joining(data, str, i_p);
-		if (access(data->paths.test_cmd, X_OK) == 0 &&
-			!is_dot_cmd(data->paths.test_cmd))
+		if (access(data->paths.test_cmd, X_OK) == 0 \
+			&& !is_dot_cmd(data->paths.test_cmd))
 		{
 			free(data->paths.test_cmd);
 			return (1);
@@ -58,8 +58,8 @@ int	cmd_detector(t_data *data, char *str)
 		else
 			free(data->paths.test_cmd);
 	}
-	if (access(str, X_OK) == 0 &&
-		!is_dot_cmd(str))
+	if (access(str, X_OK) == 0 \
+		&& !is_dot_cmd(str))
 		return (2);
 	return (0);
 }

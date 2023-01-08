@@ -16,12 +16,12 @@ int	exec_in_redirect(t_data *data, int index, int save)
 {
 	if (save == 2)
 	{
-		data->ids.inp_list[index] = open(data->redir.input[index],
-											O_RDONLY);
+		data->ids.inp_list[index] = open(data->redir.input[index], \
+			O_RDONLY);
 		if (data->ids.inp_list[index] < 0)
 		{
-			printf("Error: the file %s does not exist.",
-					data->redir.input[index]);
+			printf("Error: the file %s does not exist.", \
+			data->redir.input[index]);
 			return (-1);
 		}
 	}
@@ -32,25 +32,25 @@ int	exec_out_redirect(t_data *data, int index, int save)
 {
 	if (save == 4)
 	{
-		data->ids.outp_list[index] = open(data->redir.output[index],
-											O_CREAT | O_TRUNC | O_RDWR,
-											0644);
+		data->ids.outp_list[index] = open(data->redir.output[index], \
+			O_CREAT | O_TRUNC | O_RDWR, \
+			0644);
 		if (data->ids.outp_list[index] < 1)
 		{
-			printf("Error: the file %s had issues on open().",
+			printf("Error: the file %s had issues on open().", \
 					data->redir.output[index]);
 			return (-1);
 		}
 	}
 	if (save == 5)
 	{
-		data->ids.outp_list[index] = open(data->redir.output[index],
-											O_CREAT | O_APPEND | O_RDWR,
-											0644);
+		data->ids.outp_list[index] = open(data->redir.output[index], \
+			O_CREAT | O_APPEND | O_RDWR, \
+			0644);
 		if (data->ids.outp_list[index] < 1)
 		{
-			printf("Error: the file %s had issues on open().",
-					data->redir.output[index]);
+			printf("Error: the file %s had issues on open().", \
+				data->redir.output[index]);
 			return (-1);
 		}
 	}

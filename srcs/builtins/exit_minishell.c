@@ -59,8 +59,8 @@ void	exit_minishell(t_data *data, int index)
 	{
 		if (!is_string_digit(data->par_line[index + 1]))
 		{
-			printf("minishell: exit: %s: numeric argument required\n",
-					data->par_line[1]);
+			printf("minishell: exit: %s: numeric argument required\n", \
+				data->par_line[1]);
 			g_exit = 2;
 		}
 		else if (args > 2)
@@ -71,8 +71,9 @@ void	exit_minishell(t_data *data, int index)
 		else
 			g_exit = return_exit(data->par_line[index + 1]);
 	}
-	//elseZOMBIE CODE??
-	//free_for_builtins(data); //ZOMBIE CODE???
 	free_line_info(data);
-	exit(g_exit); //CORRIGIR!!!!
+	exit(g_exit);
 }
+//else
+//free_for_builtins(data);
+//Perceber este zombie code se ajuda

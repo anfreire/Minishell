@@ -13,18 +13,12 @@
 #include "../../header.h"
 
 extern int	g_exit;
-/* *************************************************************************** */
-/*								Ctrl-C
-																	- SIGINT									*/
-/*								Ctrl-\
-																	- SIGQUIT									*/
-/*					source: https://www.computerhope.com/unix/signals.htm         */
-/* *************************************************************************** */
+
 void	sig_handler(int signum)
 {
 	if (signum == SIGINT)
 	{
-		ioctl(STDIN_FILENO, TIOCSTI, "\n"); //injetar input no terminal
+		ioctl(STDIN_FILENO, TIOCSTI, "\n");
 		rl_replace_line("", 0);
 		rl_on_new_line();
 		g_exit = 130;
