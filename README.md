@@ -7,3 +7,4 @@
 - [ ]  Leaks no exit
 - [ ]  Leaks asseguir de ($ ▶ cd ..     →     $ ▶ pwd)
 - [ ]  Leaks asseguir de ($ ▶ echo -n teste     →     $ ▶ echo $?)
+- [ ]  Verificar se redir estão a funcionar, com a reduction da norma
