@@ -74,6 +74,3 @@ void	exit_minishell(t_data *data, int index)
 	free_line_info(data);
 	exit(g_exit);
 }
-//else
-//free_for_builtins(data);
-//Perceber este zombie code se ajuda

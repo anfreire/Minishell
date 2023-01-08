@@ -66,9 +66,8 @@ char	*is_string_expandable(char *str, t_data *data)
 	char	*var;
 	char	exit[3];
 
-	strncpy(exit, "$?", 2);
-	exit[2] = 0;
-	if (!strncmp(exit, str, ft_strlen(exit)))
+	ft_strlcpy(exit, "$?", 3);
+	if (!ft_strncmp(exit, str, 3))
 	{
 		free(str);
 		str = ft_itoa(g_exit);
@@ -82,7 +81,7 @@ char	*is_string_expandable(char *str, t_data *data)
 		if (i == -1)
 			var = empty_string(var);
 		else
-			var = get_string_var(var, strchr(data->envp[i], '=') + 1);
+			var = get_string_var(var, ft_strchr(data->envp[i], '=') + 1);
 		return (var);
 	}
 	else

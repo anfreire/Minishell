@@ -51,6 +51,7 @@ static void	run_minishell_aux(t_data *data, int index, char **av)
 	else
 	{
 		waitpid(data->ids.id[index], &g_exit, 0);
+		signal(SIGINT, sig_handler);
 		WEXITSTATUS(g_exit);
 		g_exit /= 256;
 		return ;
@@ -64,8 +65,8 @@ void	run_minishell(t_data *data, int index)
 	av[0] = "/bin/bash";
 	av[1] = "./minishell";
 	av[2] = NULL;
-	signal(SIGINT, SIG_IGN);
 	signal(SIGQUIT, SIG_IGN);
+	signal(SIGINT, SIG_IGN);
 	data->ids.id[index] = fork();
 	run_minishell_aux(data, index, av);
 }
