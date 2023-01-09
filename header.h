@@ -154,6 +154,7 @@ void	set_counters(t_data *data);
 void	alloc_cmds(t_data *data);
 void	allocat_lists(t_data *data, int size);
 void	parse_alloc(t_data *data);
+void	extra_protection_free(t_data *data);
 void	null_them_var(t_data *data);
 
 //line handling and utils

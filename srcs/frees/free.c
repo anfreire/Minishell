@@ -38,27 +38,17 @@ void	free_line_info(t_data *data)
 	free(data->paths.paths);
 	free(data->paths.p_str);
 	i = -1;
-	while (data->redir.input && data->redir.input[++i])
-		free(data->redir.input[i]);
-	free(data->redir.input);
-	i = -1;
-	while (data->redir.output && data->redir.output[++i])
-		free(data->redir.output[i]);
-	free(data->redir.output);
 	free(data->ids.inp_list);
-	free(data->ids.outp_list);
 }
 
 void	free_cmds(t_data *data)
 {
 	int	i;
-	int	size;
 	int	j;
 
-	i = -1;
-	size = data->cmd.cmd_nbr + data->built.builtin_n;
-	while (data->paths.path_cmd[++i])
-		free(data->paths.path_cmd[i]);
+	i = data->cmd.cmd_nbr;
+	while (data->paths.path_cmd[i] && i >= 0)
+		free(data->paths.path_cmd[i--]);
 	free(data->paths.path_cmd);
 	i = -1;
 	while (data->cmd.cmdx[++i])
@@ -70,10 +60,6 @@ void	free_cmds(t_data *data)
 	}
 	free(data->cmd.cmdx);
 	i = -1;
-	while (++i < size)
-		free(data->ids.pfd[i]);
-	free(data->ids.pfd);
-	free(data->ids.id);
 	data->ids.in_fd = STDIN_FILENO;
 	data->ids.out_fd = STDOUT_FILENO;
 }
@@ -120,5 +106,4 @@ void	free_for_builtins(t_data *data)
 		free(data->ids.inp_list);
 	if (data->ids.outp_list)
 		free(data->ids.outp_list);
-	free(data->ids.indicador);
 }

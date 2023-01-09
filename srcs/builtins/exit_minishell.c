@@ -72,6 +72,7 @@ void	exit_minishell(t_data *data, int index)
 		else
 			g_exit = ft_atoi(data->par_line[index + 1]);
 	}
+	extra_protection_free(data);
 	free_line_info(data);
 	free_exit(data);
 	exit(g_exit);

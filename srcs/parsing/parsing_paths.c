@@ -118,6 +118,7 @@ void	path_join(t_data *data, int index, int i_p)
 	j = -1;
 	count = path_size(data, index, i_p) + 1;
 	data->paths.path_cmd[index] = (char *)malloc(count * sizeof(char));
+	data->paths.path_cmd[index][count - 1] = 0;
 	while (data->paths.paths[i_p][++i])
 		data->paths.path_cmd[index][i] = data->paths.paths[i_p][i];
 	data->paths.path_cmd[index][0] = '/';

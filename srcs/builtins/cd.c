@@ -14,13 +14,13 @@
 
 extern int	g_exit;
 
-// if (data->par_line[index + 1][ft_strlen(data->par_line[index + 1]) - 1]
-// == '/')
-// 	data->par_line[index + 1][ft_strlen(data->par_line[index + 1]) - 1] = 0;
 static void	b_cd_aux(t_data *data, int index)
 {
 	int	value;
 
+	if (data->par_line[index + 1][ft_strlen(data->par_line[index + 1]) - 1]
+	== '/')
+		data->par_line[index + 1][ft_strlen(data->par_line[index + 1]) - 1] = 0;
 	if (ft_strncmp(data->par_line[index + 1], "~", 2) == 0)
 	{
 		chdir(getenv("HOME"));

@@ -96,8 +96,9 @@ void	allocat_lists(t_data *data, int size)
 		return ;
 	allocat_lists_aux(data, size);
 	i = -1;
-	data->ids.indicador = malloc(sizeof(int) * 2);
+	data->ids.indicador = malloc(sizeof(int) * 3);
 	data->ids.indicador[0] = 0;
+	data->ids.indicador[1] = 0;
 	while (++i < size)
 	{
 		data->ids.pfd[i] = (int *)malloc(2 * sizeof(int));
@@ -106,6 +107,7 @@ void	allocat_lists(t_data *data, int size)
 			return ;
 		data->redir.input[i] = (char *)malloc(sizeof(char));
 		data->redir.output[i] = (char *)malloc(sizeof(char));
+		data->ids.indicador[1]++;
 		data->ids.inp_list[i] = STDIN_FILENO;
 		data->ids.outp_list[i] = STDOUT_FILENO;
 	}

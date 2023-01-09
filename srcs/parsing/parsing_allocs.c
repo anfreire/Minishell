@@ -88,23 +88,3 @@ void	alloc_redirections(t_data *data)
 		data->ids.inp_list = (int *)malloc(size * sizeof(int));
 	allocat_lists(data, size);
 }
-
-void	extra_protection_free(t_data *data)
-{
-	int	valor;
-
-	if (data->ids.indicador)
-	{
-		valor = data->ids.indicador[0];
-		free(data->ids.indicador);
-	}
-	if (data->ids.pfd)
-	{
-		while (--valor >= 0)
-			free(data->ids.pfd[valor]);
-		free(data->ids.pfd);
-	}
-	if (data->ids.id)
-		free(data->ids.id);
-	null_them_var(data);
-}

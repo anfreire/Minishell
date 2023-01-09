@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+         #
+#    By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/16 20:21:37 by anfreire          #+#    #+#              #
-#    Updated: 2022/11/28 15:50:21 by dmendonc         ###   ########.fr        #
+#    Updated: 2023/01/09 10:58:47 by anfreire         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ SRCS = ./gnl/get_next_line_utils.c    \
 ./srcs/utils/utils.c    \
 ./srcs/utils/starting.c    \
 ./srcs/frees/free.c    \
+./srcs/frees/free2.c    \
 ./srcs/commands/cmd_not_found.c    \
 ./srcs/commands/command.c    \
 ./srcs/signals/signals.c    \
