@@ -48,10 +48,6 @@ void	free_cmds(t_data *data)
 	int	j;
 
 	i = -1;
-	while (data->paths.path_cmd[++i])
-		free(data->paths.path_cmd[i]);
-	free(data->paths.path_cmd);
-	i = -1;
 	while (data->cmd.cmdx[++i])
 	{
 		j = -1;

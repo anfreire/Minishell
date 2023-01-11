@@ -6,7 +6,7 @@
 /*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 19:13:18 by dmendonc          #+#    #+#             */
-/*   Updated: 2023/01/11 17:08:13 by anfreire         ###   ########.fr       */
+/*   Updated: 2023/01/11 19:51:48 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void	path_join(t_data *data, int index, int i_p)
 	i = -1;
 	j = -1;
 	count = path_size(data, index, i_p) + 1;
-	data->paths.path_cmd[index] = (char *)malloc(count * sizeof(char));
+	data->paths.path_cmd[index] = (char *)malloc((count)* sizeof(char));
 	data->paths.path_cmd[index][count - 1] = 0;
 	while (data->paths.paths[i_p][++i])
 		data->paths.path_cmd[index][i] = data->paths.paths[i_p][i];

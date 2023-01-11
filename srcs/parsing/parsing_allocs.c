@@ -63,7 +63,9 @@ void	alloc_cmds(t_data *data)
 	{
 		data->cmd.cmdx = (char ***)malloc((data->cmd.cmd_nbr + 1) \
 				* sizeof(char **));
-		data->paths.path_cmd = (char **)malloc((data->cmd.cmd_nbr + 1) \ //!
+		data->paths.indicador = malloc(sizeof(int) * 2);
+		*data->paths.indicador = data->cmd.cmd_nbr + 1;
+		data->paths.path_cmd = (char **)malloc((data->cmd.cmd_nbr + 1) \
 				* sizeof(char *));
 		data->cmd.cmdx[data->cmd.cmd_nbr] = NULL;
 		data->paths.path_cmd[data->cmd.cmd_nbr] = NULL;

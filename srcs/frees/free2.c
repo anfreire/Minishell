@@ -6,7 +6,7 @@
 /*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:57:02 by anfreire          #+#    #+#             */
-/*   Updated: 2023/01/11 15:19:05 by anfreire         ###   ########.fr       */
+/*   Updated: 2023/01/11 19:53:20 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@ static void	extra_p_free_2(t_data *data)
 		free(data->redir.output);
 	}
 	free(data->ids.indicador);
+	if (data->paths.indicador)
+	{
+		valor = data->paths.indicador[0];
+		while (--valor)
+			free(data->paths.path_cmd[valor]);
+		free(data->paths.indicador);
+		free(data->paths.path_cmd);
+	}
 	null_them_var(data);
 }
 

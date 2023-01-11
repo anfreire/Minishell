@@ -6,7 +6,7 @@
 /*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 21:47:15 by dmendonc          #+#    #+#             */
-/*   Updated: 2023/01/11 17:02:07 by anfreire         ###   ########.fr       */
+/*   Updated: 2023/01/11 19:54:37 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,5 @@ void	null_them_var(t_data *data)
 	data->redir.input = NULL;
 	data->redir.output = NULL;
 	data->ids.indicador = NULL;
+	data->paths.indicador = NULL;
 }

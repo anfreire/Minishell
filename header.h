@@ -6,7 +6,7 @@
 /*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 00:03:02 by anfreire          #+#    #+#             */
-/*   Updated: 2023/01/11 16:51:06 by anfreire         ###   ########.fr       */
+/*   Updated: 2023/01/11 19:55:03 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct s_ids
 
 typedef struct s_paths
 {
+	int		*indicador;
 	char	*test_cmd;
 	char	*p_str;
 	char	**spaths;
