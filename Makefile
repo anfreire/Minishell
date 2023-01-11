@@ -6,7 +6,7 @@
 #    By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/16 20:21:37 by anfreire          #+#    #+#              #
-#    Updated: 2023/01/09 10:58:47 by anfreire         ###   ########.fr        #
+#    Updated: 2023/01/11 15:16:46 by anfreire         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,7 +100,7 @@ SRCS = ./gnl/get_next_line_utils.c    \
 
 OBJS = $(SRCS:.c=.o)
 
-CFLAGS		= -g -Wall -Wextra -Werror -lreadline -ltinfo -fsanitize=address
+CFLAGS		= -g -Wall -Wextra -Werror -lreadline -ltinfo #-fsanitize=address
 
 all	:	$(NAME)
 

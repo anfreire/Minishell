@@ -6,7 +6,7 @@
 /*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:57:02 by anfreire          #+#    #+#             */
-/*   Updated: 2023/01/09 10:59:17 by anfreire         ###   ########.fr       */
+/*   Updated: 2023/01/11 15:19:05 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	extra_p_free_2(t_data *data)
 {
-	int valor;
+	int	valor;
 
 	if (data->ids.outp_list)
 		free(data->ids.outp_list);

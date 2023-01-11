@@ -39,6 +39,7 @@ void	free_line_info(t_data *data)
 	free(data->paths.p_str);
 	i = -1;
 	free(data->ids.inp_list);
+	i = -1;
 }
 
 void	free_cmds(t_data *data)
@@ -46,9 +47,9 @@ void	free_cmds(t_data *data)
 	int	i;
 	int	j;
 
-	i = data->cmd.cmd_nbr;
-	while (data->paths.path_cmd[i] && i >= 0)
-		free(data->paths.path_cmd[i--]);
+	i = -1;
+	while (data->paths.path_cmd[++i])
+		free(data->paths.path_cmd[i]);
 	free(data->paths.path_cmd);
 	i = -1;
 	while (data->cmd.cmdx[++i])

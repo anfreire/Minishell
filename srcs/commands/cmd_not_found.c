@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_not_found.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 17:26:55 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/11/23 18:26:23 by dmendonc         ###   ########.fr       */
+/*   Updated: 2023/01/11 15:14:38 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,16 @@ void	check_for_hdoc(t_data *data, int *index, int *flag)
 	}
 }
 
+int	par_line_len(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (data->par_line[i])
+		i++;
+	return (i);
+}
+
 void	no_command_not_found(t_data *data)
 {
 	int	len;
@@ -38,7 +48,8 @@ void	no_command_not_found(t_data *data)
 
 	flag = 1;
 	check_for_hdoc(data, &index, &flag);
-	if (flag == 0)
+	len = par_line_len(data);
+	if (flag == 0 && index < len)
 	{
 		len = ft_strlen(data->par_line[index]);
 		write(2, data->par_line[index], len);
