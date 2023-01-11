@@ -52,6 +52,8 @@ char	**realloc_list(char **ptr, int len)
 			ft_strlcpy(tmp[i], ptr[i], ft_strlen(ptr[i]) + 1);
 			free(ptr[i]);
 		}
+		if (ptr[i])
+			free(ptr[i]);
 		free(ptr);
 		ptr = tmp;
 	}
