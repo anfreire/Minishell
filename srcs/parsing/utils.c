@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 21:47:15 by dmendonc          #+#    #+#             */
-/*   Updated: 2023/01/05 21:49:17 by dmendonc         ###   ########.fr       */
+/*   Updated: 2023/01/11 17:02:07 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ int	get_cmd_i(t_data *data, int index)
 
 void	create_lists(t_data *data)
 {
-	data->built.builtins = (char **)malloc(9 * sizeof(char *));
-	data->redir.redir_lib = (char *)malloc(4 * sizeof(char));
+	data->built.builtins = (char **)malloc(9 * sizeof(char *)); //!
+	data->redir.redir_lib = (char *)malloc(4 * sizeof(char));	//!
 	get_str(data, "echo", 0);
 	get_str(data, "pwd", 1);
 	get_str(data, "env", 2);
@@ -80,7 +80,7 @@ void	get_str(t_data *data, char *str, int index)
 	i = 0;
 	while (str[i])
 		i++;
-	data->built.builtins[index] = (char *)malloc((i + 1) * sizeof(char));
+	data->built.builtins[index] = (char *)malloc((i + 1) * sizeof(char)); //!
 	data->built.builtins[index][i] = 0;
 	i = -1;
 	while (str[++i] != 0)

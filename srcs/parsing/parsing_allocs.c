@@ -63,7 +63,7 @@ void	alloc_cmds(t_data *data)
 	{
 		data->cmd.cmdx = (char ***)malloc((data->cmd.cmd_nbr + 1) \
 				* sizeof(char **));
-		data->paths.path_cmd = (char **)malloc((data->cmd.cmd_nbr + 1) \
+		data->paths.path_cmd = (char **)malloc((data->cmd.cmd_nbr + 1) \ //!
 				* sizeof(char *));
 		data->cmd.cmdx[data->cmd.cmd_nbr] = NULL;
 		data->paths.path_cmd[data->cmd.cmd_nbr] = NULL;
@@ -85,6 +85,6 @@ void	alloc_redirections(t_data *data)
 		data->ids.inp_list = (int *)malloc(sizeof(int));
 	}
 	else
-		data->ids.inp_list = (int *)malloc(size * sizeof(int));
+		data->ids.inp_list = (int *)malloc(size * sizeof(int)); //!
 	allocat_lists(data, size);
 }

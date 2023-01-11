@@ -6,7 +6,7 @@
 /*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 19:13:18 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/11/15 13:06:11 by anfreire         ###   ########.fr       */
+/*   Updated: 2023/01/11 17:08:13 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	path_str_aux(t_data *data, int i)
 		return ;
 	while (data->envp[i][j])
 		j++;
-	data->paths.p_str = malloc((j + 1) * sizeof(char));
+	data->paths.p_str = malloc((j + 1) * sizeof(char)); //!
 	while (data->envp[i][++k] != 0)
 		data->paths.p_str[k - 5] = data->envp[i][k];
 	data->paths.p_str[k - 5] = '\0';
@@ -68,7 +68,7 @@ void	joinbar(t_data *data, int index)
 	i = 0;
 	while (data->paths.spaths[index][i] != '\0')
 		i++;
-	data->paths.paths[index] = (char *)malloc((i + 2) * sizeof(char));
+	data->paths.paths[index] = (char *)malloc((i + 2) * sizeof(char)); //!
 	i = -1;
 	while (data->paths.spaths[index][++i])
 		data->paths.paths[index][i] = data->paths.spaths[index][i];
@@ -93,7 +93,7 @@ void	get_paths(t_data *data)
 	{
 		count = how_many_paths(data->paths.p_str, 58) + 1;
 		data->paths.spaths = spliting(data->paths.p_str, ':');
-		data->paths.paths = (char **)malloc(count * sizeof(char *));
+		data->paths.paths = (char **)malloc(count * sizeof(char *)); //!
 		data->paths.paths[count - 1] = NULL;
 		while (data->paths.spaths[++i])
 		{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   envp.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:29:28 by anfreire          #+#    #+#             */
-/*   Updated: 2022/12/30 00:50:44 by dmendonc         ###   ########.fr       */
+/*   Updated: 2023/01/11 17:07:41 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	get_envp(t_data *data, char **envp)
 	i = 0;
 	while (envp[i])
 		i++;
-	data->envp = (char **)malloc((i + 1) * sizeof(char *));
+	data->envp = (char **)malloc((i + 1) * sizeof(char *)); //!
 	data->envp[i] = NULL;
 	i = -1;
 	while (envp[++i])
@@ -30,7 +30,7 @@ void	get_envp(t_data *data, char **envp)
 		j = 0;
 		while (envp[i][j])
 			j++;
-		data->envp[i] = (char *)malloc((j + 1) * sizeof(char));
+		data->envp[i] = (char *)malloc((j + 1) * sizeof(char)); //!
 		data->envp[i][j] = '\0';
 		j = -1;
 		while (envp[i][++j] != 0)

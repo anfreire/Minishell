@@ -1,0 +1,49 @@
+NAME = minishell
+./srcs/redirections/heredoc.c    \
+./srcs/builtins/echo.c    \
+./srcs/builtins/minishell.c    \
+./srcs/builtins/exit_minishell.c    \
+./srcs/parsing/true_path.c    \
+./srcs/parsing/parsing_paths.c    \
+./srcs/signals/exit_shell.c    \
+./libft/ft_strchr.c    \
+./libft/ft_isalpha.c    \
+./libft/ft_memchr.c    \
+./libft/ft_putchar_fd.c   \
+./libft/ft_strrchr.c    \
+		@echo	""
+		@echo	"$$ ./minishell && Object Files Generated"
+		@echo	""
+		@echo	""
+		@echo	""
+		@echo  "\e[34m           :::   :::   ::::::::::: ::::    ::: ::::::::::: ::::::::  :::    ::: :::::::::: :::        :::	"
+		@echo  "         :+:+: :+:+:      :+:     :+:+:   :+:     :+:    :+:    :+: :+:    :+: :+:        :+:        :+:  "
+		@echo  "       +:+ +:+:+ +:+     +:+     :+:+:+  +:+     +:+    +:+        +:+    +:+ +:+        +:+        +:+   "
+		@echo  "      +#+  +:+  +#+     +#+     +#+ +:+ +#+     +#+    +#++:++#++ +#++:++#++ +#++:++#   +#+        +#+    "
+		@echo  "     +#+       +#+     +#+     +#+  +#+#+#     +#+           +#+ +#+    +#+ +#+        +#+        +#+     "
+		@echo  "    #+#       #+#     #+#     #+#   #+#+#     #+#    #+#    #+# #+#    #+# #+#        #+#        #+#      "
+		@echo  "   ###       ### ########### ###    #### ########### ########  ###    ### ########## ########## ##########"
+		@echo  " "
+		@echo  "\e[32mVersion : 1.0.1"
+		@echo  " "
+		@echo  "\e[36mThis program replicates the behavior of the bash shell. runs commands, redirections and has some builtin commands."
+		@echo  "Runs commands that already exist in the operating system (some we built too), by using parallel processing (forks)"
+		@echo  "and the redirections run exactly like in the bash hierarchy. You're able to fully check the objectives on this project "
+		@echo  "by checking the file subject.pdf."
+		@echo  " "
+		@echo  "\e[33mSo we hope you enjoy going through this shell half as much as we enjoyed making it for you,"
+		@echo  "because we had a ball."
+		@echo  " "
+		@echo  "\e[32mnow run ./minishell and welcome!"
+		@echo  " "
+		@echo  "\e[0mWork made by:"
+		@echo  "Diogo MBM Calado and Andre Freire, from 42 Lisbon."
+		@echo  " "
+		@echo  " "
+		@echo  " "
+	@echo	""
+	@echo	"$$ Object Files Deleted"
+	@echo	""
+	@echo	""
+	@echo	"$$ ./minishell Deleted"
+	@echo	""

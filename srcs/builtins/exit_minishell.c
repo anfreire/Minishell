@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_minishell.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 21:53:19 by anfreire          #+#    #+#             */
-/*   Updated: 2023/01/06 19:41:34 by dmendonc         ###   ########.fr       */
+/*   Updated: 2023/01/11 15:59:53 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

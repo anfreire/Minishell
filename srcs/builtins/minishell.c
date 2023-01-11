@@ -6,7 +6,7 @@
 /*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:59:01 by anfreire          #+#    #+#             */
-/*   Updated: 2023/01/11 14:42:00 by anfreire         ###   ########.fr       */
+/*   Updated: 2023/01/11 16:08:47 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ static void	run_minishell_aux(t_data *data, int index, char **av)
 	else
 	{
 		waitpid(data->ids.id[index], &g_exit, 0);
-		signal(SIGINT, sig_handler);
 		WEXITSTATUS(g_exit);
+		signal(SIGINT, sig_handler);
 		g_exit /= 256;
 		return ;
 	}

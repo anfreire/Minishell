@@ -6,7 +6,7 @@
 /*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 16:31:52 by anfreire          #+#    #+#             */
-/*   Updated: 2022/10/28 00:29:54 by anfreire         ###   ########.fr       */
+/*   Updated: 2023/01/11 17:09:47 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ char	**realloc_list(char **ptr, int len)
 	}
 	else
 	{
-		tmp = malloc(sizeof(char *) * (len + 1));
+		tmp = malloc(sizeof(char *) * (len + 1)); //!
 		i = -1;
 		while (ptr[++i])
 		{
-			tmp[i] = malloc(sizeof(char) * ft_strlen(ptr[i]) + 1);
+			tmp[i] = malloc(sizeof(char) * ft_strlen(ptr[i]) + 1); //!
 			ft_strlcpy(tmp[i], ptr[i], ft_strlen(ptr[i]) + 1);
 			free(ptr[i]);
 		}

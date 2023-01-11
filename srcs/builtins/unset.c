@@ -6,7 +6,7 @@
 /*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 22:17:20 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/11/15 13:02:44 by anfreire         ###   ########.fr       */
+/*   Updated: 2023/01/11 16:25:51 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,22 +86,17 @@ char	*selection(t_data *data, int j)
 int	env_var_detector(t_data *data, char *str)
 {
 	int	i;
-	int	j;
 	int	len;
 
 	i = -1;
+	len = ft_strlen(str);
 	while (data->envp[++i])
 	{
-		j = -1;
-		len = len_str(data->envp[i]);
-		while (str[++j] && j < len)
+		if (!ft_strncmp(data->envp[i], str, len))
 		{
-			if (str[j] != data->envp[i][j])
-				break ;
+			if (data->envp[i][len] && data->envp[i][len] == '=')
+				return (i);
 		}
-		len = len_str(str);
-		if (j == len)
-			return (i);
 	}
 	return (-1);
 }
